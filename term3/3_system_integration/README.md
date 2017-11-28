@@ -19,7 +19,18 @@ steering messages, raw image data, LIDAR data etc. Let's see how we can get usef
 
 ### Extract topics as CSV files
 
-**TODO**
+```bash
+# list all topics in a bagfile
+rostopic list -b bagfile.bag
+
+# extract topic 'roslog' into a file `roslog.csv'
+rostopic echo -b bagfile.bag -p /roslog > roslog.csv
+
+# extract all topics into multiple CSV files (takes a long time)
+for topic in `rostopic list -b bagfile.bag`; do rostopic echo -p -b bagfile.bag $topic > bagfile-${topic//\//_}.csv; done
+```
+
+More info on [answers.ros.org](https://answers.ros.org/question/9102/how-to-extract-data-from-bag/).
 
 ### Get all images (and video)
 
