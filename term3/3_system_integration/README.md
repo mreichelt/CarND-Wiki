@@ -45,7 +45,7 @@ More info on [answers.ros.org](https://answers.ros.org/question/9102/how-to-extr
 
 #### Manual start
 To manually start it you have to launch the `ros core` first, for example with `roslaunch launch/site_test.launch`.  
-You must execute one of the following commands in a __different__ terminal.
+*You should execute the command in a __different__ terminal.*
 
 ```bash
 # start rviz without configuration file
@@ -63,8 +63,8 @@ Configuration Files:
 - [video_lidar_only.rviz](assets/video_lidar_only.rviz)
 
 #### Automatic start
-Aside from manually run *rviz* every time, you can implement it in your launch files.
-You simply add the following line to a suitable launch file, for example `site_test.launch`.
+Aside from manually run *rviz* each time, you can implement it in your launch files.
+Just add the following line to a suitable launch file, for example `site_test.launch`.
 Preferable somewhere at the beginning to have it up and running before *ROS* is completely started.
 
 ```xml
@@ -72,8 +72,8 @@ Preferable somewhere at the beginning to have it up and running before *ROS* is 
 <node pkg="rviz" type="rviz" name="my_rviz" args="-d $(find styx)../../launch/video_lidar_only.rviz"/>
 ```
 
-Or download this [site_test_rviz.launch](assets.site_test_rviz.launch) file.
-Make sure to copy the configuration file at the correct place (`ros/launch/video_lidar_only.rviz`).
+Example launch file: [site_test_rviz.launch](assets/site_test_rviz.launch)  
+*Make sure to copy the configuration file to the correct place (`ros/launch/video_lidar_only.rviz`).*
 
 More info on [wiki.ros.org/rviz](http://wiki.ros.org/rviz)
 
