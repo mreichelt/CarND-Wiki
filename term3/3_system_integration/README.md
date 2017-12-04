@@ -37,8 +37,57 @@ More info on [answers.ros.org](https://answers.ros.org/question/9102/how-to-extr
 **TODO**
 
 ### Visualize the rosbag
+Once you have all waypoints extracted you can visualize them.
+The easiest way is loading them in a *Jupyter Notebook* and display it with *matplotlib*.  
+First you need to import the necessary libraries.
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+```
 
-**TODO**
+Next is reading the files extracted from the *rosbag* with *pandas*.
+To get the x and y values for each waypoint you have to iterate through the *pandas* data set and its columns.
+Each waypoint is split into several columns for position and orientation values.
+Following script iterates through the columns of one data set and stores only the values of the position in a dictionary called *waypoints*.
+```python
+wp = pd.read_csv('bagfile_{base, final}_waypoints.csv')
+waypoints = dict()
+for idx, item in wp.iteritems():
+    if "position" in idx:
+        waypoint_idx = idx.split(".")[1]
+        result = re.search("\d+", waypoint_idx)
+        idx_key = int(result.group())
+        if idx_key not in waypoints:
+            waypoints[idx_key] = dict()
+        waypoints[idx_key][idx[-1]] = item.values[0]
+
+# create lists for matplotlib
+xs = []
+ys = []
+for idx, wp in base_waypoints.iteritems():
+    xs.append(wp['x'])
+    ys.append(wp['y'])
+```
+Depending on what you want to plot you have to read other waypoints, the current position, or when *DBW* was engaged respectively disengaged.
+
+Lastly you need to plot the values.
+```python
+plt.rcParams["figure.figsize"] = [16, 16]
+p1 = plt.plot([xs[0]], [ys[0]], 'ko', ms=10.0)
+p2 = plt.plot(xs, ys, 'go', ms=5.)
+p4 = plt.plot(final_xs, final_ys, 'c', ms=5.0)
+p5 = plt.plot(current_xs, current_ys, 'r', lw=5.0)
+p3 = plt.plot([current_xs[0]], [current_ys[0]], 'ko', ms=15.0)
+p6 = plt.plot(dbw_enabled_x, dbw_enabled_y, 'gx', ms=20.0, mew=10.0)
+p7 = plt.plot(dbw_disabled_x, dbw_disabled_y, 'rx', ms=20.0, mew=10.0)
+plt.xlabel("X", fontsize=10)
+plt.ylabel("Y", fontsize=10)
+plt.legend((p1[0], p2[0], p3[0], p4[0], p5[0], p6[0], p7[0]), ('first base_waypoint', 'base_waypoints', 'final_waypoints', 'current position', 'first current position', 'dbw enabled', 'dbw disabled'), loc=0)
+plt.show()
+```
+
+This will result in an image similar to following:
+![Possible result](assets/waypoints_visualized.png)
 
 ### Replay rosbag with *rviz*  
 *ROS* comes with *rviz*, a tool to display the recorded video and LiDAR data.  
