@@ -19,3 +19,4 @@ We hang around in the [#wiki](https://carnd.slack.com/messages/G86DM04PM) channe
 - [Marc Reichelt](https://github.com/mreichelt) ([Twitter](https://twitter.com/mreichelt))
 - [Célien Nanson](https://github.com/Mornor)
 - [Ryein C. Goddard](https://github.com/Goddard) ([Twitter](https://twitter.com/ryeingoddard))
+- [Simon Ritzel](https://github.com/SiRi13) ([Twitter](https://twitter.com/sIm0n87))
