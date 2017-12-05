@@ -126,7 +126,6 @@ Example launch file: [site_test_rviz.launch](assets/site_test_rviz.launch)
 
 More info on [wiki.ros.org/rviz](http://wiki.ros.org/rviz)
 
-**TODO**
-
+---
 
 Help wanted - add your knowledge, tips & tricks by editing this file! 🎉

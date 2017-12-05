@@ -1,3 +1,7 @@
 # Term 1 Project 2: Traffic Sign Classifier
 
-Nothing here yet! Add your knowledge, tips & tricks by editing this file! 🎉
+Project URL: https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project
+
+---
+
+Help wanted - add your knowledge, tips & tricks by editing this file! 🎉

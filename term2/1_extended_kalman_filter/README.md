@@ -1,3 +1,7 @@
 # Term 2 Project 1: Extended Kalman Filter
 
-Nothing here yet! Add your knowledge, tips & tricks by editing this file! 🎉
+Project URL: https://github.com/udacity/CarND-Extended-Kalman-Filter-Project
+
+---
+
+Help wanted - add your knowledge, tips & tricks by editing this file! 🎉

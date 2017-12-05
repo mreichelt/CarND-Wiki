@@ -1,3 +1,7 @@
 # Term 2 Project 5: Model Predictive Control
 
-Nothing here yet! Add your knowledge, tips & tricks by editing this file! 🎉
+Project URL: https://github.com/udacity/CarND-MPC-Project
+
+---
+
+Help wanted - add your knowledge, tips & tricks by editing this file! 🎉

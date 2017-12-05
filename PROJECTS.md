@@ -8,6 +8,7 @@ Overview of all projects of the Self-Driving Car Engineer Nanodegree.
 2. [Traffic Sign Classifier](term1/2_traffic_sign_classifier)
 3. [Behavioral Cloning](term1/3_behavioral_cloning)
 4. [Advanced Lane Finding](term1/4_advanced_lane_finding)
+5. [Vehicle Detection](term1/5_vehicle_detection)
 
 ## Term 2: Sensor Fusion, Localization, and Control
 
