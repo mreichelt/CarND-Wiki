@@ -11,6 +11,38 @@ and later on your code will be run on an actual car named Carla provided by Udac
 - Performance really is key here. You can get a long way using the Docker image, but to really test your project on the simulator you will need a fast machine and probably a NVIDIA GPU for the traffic light recognition.
 - If your ROS does not connect with the simulator try restarting ROS or the simulator. The setup is a little bit flaky.
 
+## ROS in Docker
+
+If you are running a Windows or Mac machine you can start a ROS installation using Docker. Udacity provides a
+[Dockerfile](https://github.com/udacity/CarND-Capstone/blob/master/Dockerfile) and [describes](https://github.com/udacity/CarND-Capstone#docker-installation) how
+to build and run it. Instead of building it yourself, we provide the [latest version of the Docker image](https://hub.docker.com/r/mreichelt/carnd-capstone-docker/)
+ready to run for you, which you can download and run directly:
+
+```bash
+# starts our pre-built docker image
+docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --name carnd_capstone --rm -it mreichelt/carnd-capstone-docker
+```
+
+Explanation: `-p 4567:4567` redirects the port, `-v $PWD:/capstone` mounts your current working directory
+into `/capstone` inside Docker. Furthermore, `-v /tmp/log:/root/.ros/` mounts the ROS home directory into
+`/tmp/log` on your host machine.
+
+Some more tips:
+
+```bash
+# in a new terminal window on your host machine, start a second bash while the Docker image is still running:
+docker exec -it carnd_capstone bash
+
+# for Mac users: enable X11 forwarding with XQuartz (must be installed)
+open -a XQuartz
+xhost +
+docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --name carnd_capstone -e DISPLAY=docker.for.mac.localhost:0 --rm -it mreichelt/carnd-capstone-docker
+```
+
+See the [X11 forwarding](../../TIPS_AND_TRICKS.md#show-graphical-windows-from-within-a-docker-image-on-mac) tips & tricks
+for more info.
+
+
 ## rosbag debugging
 
 When your project submission fails the review feedback alone usually is not enough to find out what went wrong.
@@ -118,7 +150,7 @@ rosrun rviz rviz -d launch/udacity.rviz
 rosrun rviz rviz -d launch/video_lidar_only.rviz
 ```
 
-Configuration Files:  
+Configuration Files:
 - [udacity.rviz](assets/udacity.rviz)  
 - [video_lidar_only.rviz](assets/video_lidar_only.rviz)
 
