@@ -37,9 +37,11 @@ More info on [answers.ros.org](https://answers.ros.org/question/9102/how-to-extr
 **TODO**
 
 ### Visualize the rosbag
+
 Once you have all waypoints extracted you can visualize them.
 The easiest way is loading them in a *Jupyter Notebook* and display it with *matplotlib*.  
 First you need to import the necessary libraries.
+
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -49,6 +51,7 @@ Next is reading the files extracted from the *rosbag* with *pandas*.
 To get the x and y values for each waypoint you have to iterate through the *pandas* data set and its columns.
 Each waypoint is split into several columns for position and orientation values.
 Following script iterates through the columns of one data set and stores only the values of the position in a dictionary called *waypoints*.
+
 ```python
 wp = pd.read_csv('bagfile_{base, final}_waypoints.csv')
 waypoints = dict()
@@ -68,9 +71,11 @@ for idx, wp in base_waypoints.iteritems():
     xs.append(wp['x'])
     ys.append(wp['y'])
 ```
+
 Depending on what you want to plot you have to read other waypoints, the current position, or when *DBW* was engaged respectively disengaged.
 
 Lastly you need to plot the values.
+
 ```python
 plt.rcParams["figure.figsize"] = [16, 16]
 p1 = plt.plot([xs[0]], [ys[0]], 'ko', ms=10.0)
@@ -89,10 +94,16 @@ plt.show()
 This will result in an image similar to following:
 ![Possible result](assets/waypoints_visualized.png)
 
-### Replay rosbag with *rviz*  
-*ROS* comes with *rviz*, a tool to display the recorded video and LiDAR data.  
+### Replay rosbag with *rviz*
+
+*ROS* comes with *rviz*, a tool to display the recorded video and LiDAR data.
+
+**Note: This requires a native Ubuntu installation or a VM with UI! It
+will not work within a Docker image.** The main reason behind this is that OpenGL
+acceleration does not work.
 
 #### Manual start
+
 To manually start it you have to launch the `ros core` first, for example with `roslaunch launch/site_test.launch`.  
 *You should execute the command in a __different__ terminal.*
 
@@ -112,7 +123,8 @@ Configuration Files:
 - [video_lidar_only.rviz](assets/video_lidar_only.rviz)
 
 #### Automatic start
-Aside from manually run *rviz* each time, you can implement it in your launch files.
+
+Aside from manually running *rviz* each time, you can implement it in your launch files.
 Just add the following line to a suitable launch file, for example `site_test.launch`.
 Preferable somewhere at the beginning to have it up and running before *ROS* is completely started.
 
