@@ -5,11 +5,19 @@ Project URL: https://github.com/udacity/CarND-Capstone
 In this project you will write a Robot Operating System (ROS) that will first steer a virtual car in the simulator,
 and later on your code will be run on an actual car named Carla provided by Udacity.
 
+
 ## Known issues & typical problems
 
 - ROS only works on Linux. You will need to install Ubuntu 16.04 if you want a native installation, or use the provided Docker file to run a preconfigured ROS installation on Ubuntu 16.04 inside a virtual machine on your Mac or Windows host.
 - Performance really is key here. You can get a long way using the Docker image, but to really test your project on the simulator you will need a fast machine and probably a NVIDIA GPU for the traffic light recognition.
 - If your ROS does not connect with the simulator try restarting ROS or the simulator. The setup is a little bit flaky.
+
+
+## FAQ
+
+#### What is the speed limit?
+40 km/h (~25 miles/h) in the simulator, 10 km/h with Carla.
+
 
 ## ROS in Docker
 
