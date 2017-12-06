@@ -66,7 +66,39 @@ More info on [answers.ros.org](https://answers.ros.org/question/9102/how-to-extr
 
 ### Get all images (and video)
 
-**TODO**
+This is how you can extract the JPG images of Udacity's `udacity_successful_light_detection.bag` file.
+First, we create a `export.launch` file in our `ros/launch/` directory, like this (note that the path
+can be different for you):
+
+```xml
+<launch>
+  <node pkg="rosbag" type="play" name="rosbag" args="-d 2 /capstone/data/udacity_successful_light_detection.bag" />
+  <node name="extract" pkg="image_view" type="image_saver" respawn="false" output="screen" cwd="ROS_HOME">
+    <remap from="image" to="image_raw" />
+  </node>
+</launch>
+```
+
+```python
+# make sure you have the `image-view` node installed:
+apt install ros-kinetic-image-view
+
+# export images as JPG files, they will be written to the .ros folder
+roslaunch launch/export.launch
+```
+
+For Udacity's file you should get a lot of images named `left0000.jpg` to `left0569.jpg`, looking like this:
+
+![exported image of rosbag](assets/left0408.jpg)
+
+With [ffmpeg](https://www.ffmpeg.org/) installed you can make a video out of them:
+
+```bash
+ffmpeg -framerate 30 -pattern_type glob -i '*.jpg' -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4
+```
+
+The video will look [like this](https://youtu.be/4Bb_T8NIwcY).
+
 
 ### Visualize the rosbag
 
