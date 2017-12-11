@@ -12,6 +12,10 @@ and later on your code will be run on an actual car named Carla provided by Udac
 - Performance really is key here. You can get a long way using the Docker image, but to really test your project on the simulator you will need a fast machine and probably a NVIDIA GPU for the traffic light recognition.
 - If your ROS does not connect with the simulator try restarting ROS or the simulator. The setup is a little bit flaky.
 
+### Simulator Issues
+
+- Simulator accepts only throttle or brake commands and not both at the same time.
+
 
 ## FAQ
 
